@@ -6,13 +6,18 @@ import string
 import aiohttp
 from aiohttp import ClientError
 
-from api.mts.models import BaseRequestModel, MyTariffsList, MyTariff, TariffList, Tariff, ActivationResponse
+from api.mts.models import BaseRequestModel
 
 
 class BaseRequest(object):
     def __init__(self, base_url):
         self.base_url = base_url
-        self.headers = {'Authorization': 'OAuth y0_AgAAAABsmBQLAAKkvAAAAADkYx2aUFS5mnJkTP-InW6Z-ecJJM0iMLI'}
+        self.headers = {
+            'Cookie': 'deviceUUID=78c87e96-c1e6-42ca-a739-db3491168b5e',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 YaBrowser/23.11.0.0 Safari/537.36',
+            'Origin': 'https://tvoe.ru',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
         self.proxy = None
         self.debug = True
 
@@ -35,36 +40,41 @@ class BaseRequest(object):
             raise  # Re-raise the exception
 
 
-class MtsAPI(BaseRequest):
-    def __init__(self, base_url='https://api.music.yandex.net/payclick'):
+class TvoeAPI(BaseRequest):
+    def __init__(self, base_url='https://api.mindbox.ru'):
         super().__init__(base_url=base_url)
 
-    async def get_tariff_now(self, phone_number: str) -> MyTariffsList:
-        params = {"msisdn": phone_number}
-        response = await self._request(method='GET', endpoint='subscriptions', params=params)
-        return MyTariffsList(tariffs=[MyTariff(**iter_data) for iter_data in json.loads(response.text)])
-
-    async def get_tariff_list(self, phone_number: str) -> TariffList:
-        params = {"msisdn": phone_number}
-        response = await self._request(method='GET', endpoint='content-provider/available-subscriptions', params=params)
-        return TariffList(tariffs=[Tariff(**iter_data) for iter_data in json.loads(response.text)])
-
-    async def activate_mts_premium(self, phone_number: str, content_id: str) -> ActivationResponse:
-        uid = await self._generate_uid
-        bid = await self._generate_bid
-        json_data = {
-            "userId": f"00000000100090099{uid}",
-            "bindingId": f"88b32A591b86Dbcaa98b{bid}",
-            "msisdn": phone_number.replace("+", "", 1),
-            "contentId": content_id
+    async def create_integration(self,
+                                 email: str,
+                                 result_in_wheel: int
+                                 ):
+        endpoint = 'v3/js/operations/async'
+        params = {
+            'version': '1.0.524',
+            'transactionId': 'd607d215-beaf-4a53-b125-04d4452cbd2e',
+            'transport': 'beacon',
+            'operation': 'popmechanic-integration-create-76921',
+            'originDomain': 'tvoe.ru',
         }
-        response = await self._request(method='POST', endpoint='subscriptions', json=json_data)
-        return ActivationResponse(**json.loads(response.text))
 
-    @property
-    async def _generate_uid(self):
-        return ''.join(random.choice(string.digits) for _ in range(3))
+        data = {
+            'originDomain': 'tvoe.ru',
+            'deviceUUID': '78c87e96-c1e6-42ca-a739-db3491168b5e',
+            'operation': 'popmechanic-integration-create-76921',
+            'ianaTimeZone': 'Europe/Moscow',
+            'data': {
+                'customer': {
+                    'email': email,
+                    'firstName': 'Евгений',
+                    'subscriptions': [{'pointOfContact': 'Email'}]
+                },
+                'customerAction': {
+                    'customFields': {
+                        'EmailInWheel': email,
+                        'WinResultlInWheel': f'{result_in_wheel}'
+                    }
+                }
+            }
+        }
 
-    @property
-    async def _generate_bid(self):
-        return ''.join(random.choice(string.hexdigits) for _ in range(12))
+        return await self._request('POST', endpoint, params=params, data=data)
