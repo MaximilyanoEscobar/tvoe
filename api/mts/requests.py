@@ -2,6 +2,7 @@ import json
 import logging
 import random
 import string
+from urllib import parse
 
 import aiohttp
 from aiohttp import ClientError
@@ -10,15 +11,15 @@ from api.mts.models import BaseRequestModel
 
 
 class BaseRequest(object):
-    def __init__(self, base_url):
+    def __init__(self,
+                 base_url: str,
+                 headers: dict = None,
+                 proxy: str = None):
         self.base_url = base_url
         self.headers = {
-            'Cookie': 'deviceUUID=78c87e96-c1e6-42ca-a739-db3491168b5e',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 YaBrowser/23.11.0.0 Safari/537.36',
-            'Origin': 'https://tvoe.ru',
-            'Content-Type': 'application/x-www-form-urlencoded',
-        }
-        self.proxy = None
+        } if headers is None else headers
+        self.proxy = proxy
         self.debug = True
 
     async def _request(self, method, endpoint, **params) -> BaseRequestModel:
@@ -56,25 +57,33 @@ class TvoeAPI(BaseRequest):
             'operation': 'popmechanic-integration-create-76921',
             'originDomain': 'tvoe.ru',
         }
-
-        data = {
-            'originDomain': 'tvoe.ru',
-            'deviceUUID': '78c87e96-c1e6-42ca-a739-db3491168b5e',
-            'operation': 'popmechanic-integration-create-76921',
-            'ianaTimeZone': 'Europe/Moscow',
-            'data': {
-                'customer': {
-                    'email': email,
-                    'firstName': 'Евгений',
-                    'subscriptions': [{'pointOfContact': 'Email'}]
+        second_data = {
+                "customer": {
+                    "email": email,
+                    "firstName": "Евгений",
+                    "subscriptions": [
+                        {
+                            "pointOfContact": "Email"
+                        }
+                    ]
                 },
-                'customerAction': {
-                    'customFields': {
-                        'EmailInWheel': email,
-                        'WinResultlInWheel': f'{result_in_wheel}'
+                "customerAction": {
+                    "customFields": {
+                        "EmailInWheel": email,
+                        "WinResultlInWheel": result_in_wheel
                     }
                 }
             }
+        data = {
+            "version": "1.0.524",
+            "transactionId": "d607d215-beaf-4a53-b125-04d4452cbd2e",
+            "transport": "beacon",
+            "operation": "popmechanic-integration-create-76921",
+            "originDomain": "tvoe.ru",
+            "deviceUUID": "78c87e96-c1e6-42ca-a739-db3491168b5e",
+            "ianaTimeZone": "Europe/Moscow",
+            "data": str(second_data)
         }
+
 
         return await self._request('POST', endpoint, params=params, data=data)

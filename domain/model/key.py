@@ -9,6 +9,7 @@ class Key(BaseModel):
     is_used: bool = False
     user_id: Optional[str] = None
     key: Optional[str] = None
+    email: Optional[str] = None
     created_at: Optional[datetime] = datetime.now()
     updated_at: Optional[datetime] = datetime.now()
 

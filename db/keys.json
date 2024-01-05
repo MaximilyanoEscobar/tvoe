@@ -1,1 +1,264 @@
-{}
+{
+  "1": {
+    "id": "1",
+    "is_used": true,
+    "user_id": "1",
+    "key": "910ee709a0b7499ba5608ba343fe8bbf",
+    "email": "kemerovo1002@gmail.com",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-05T17:50:17.727387"
+  },
+  "2": {
+    "id": "2",
+    "is_used": false,
+    "user_id": null,
+    "key": "f44c0f6a4b6e4d998456349c5968df26",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-04T22:55:04.359481"
+  },
+  "3": {
+    "id": "3",
+    "is_used": false,
+    "user_id": null,
+    "key": "d725a1f3953242ca8e68243f01c6dfac",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-04T22:55:04.359481"
+  },
+  "4": {
+    "id": "4",
+    "is_used": false,
+    "user_id": null,
+    "key": "62060fb9136e438e9d6d7216601ecc47",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-04T22:55:04.359481"
+  },
+  "5": {
+    "id": "5",
+    "is_used": true,
+    "user_id": "1",
+    "key": "46282cb191464bfd804bffbf18103ddd",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-04T23:35:57.048461"
+  },
+  "6": {
+    "id": "6",
+    "is_used": true,
+    "user_id": "1",
+    "key": "c0fbd180d0aa4dcaaecfd86fc0671ab3",
+    "email": "mix.mix2014@mail.ru",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-05T15:19:32.918224"
+  },
+  "7": {
+    "id": "7",
+    "is_used": false,
+    "user_id": null,
+    "key": "4424e43d9f3e45eb9c8b6a52b80622e2",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-04T22:55:04.360479"
+  },
+  "8": {
+    "id": "8",
+    "is_used": true,
+    "user_id": "1",
+    "key": "e0fa2ba2a1d7415eba568626d2a09837",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-04T23:23:24.500237"
+  },
+  "9": {
+    "id": "9",
+    "is_used": false,
+    "user_id": null,
+    "key": "9553ca79d8884dbda4dc184da1897f13",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-04T22:55:04.361480"
+  },
+  "10": {
+    "id": "10",
+    "is_used": false,
+    "user_id": null,
+    "key": "71c9f1dcefcb4859b90d6fad4862d9c8",
+    "created_at": "2024-01-04T22:54:45.571134",
+    "updated_at": "2024-01-04T22:55:04.361480"
+  },
+  "11": {
+    "id": "11",
+    "is_used": false,
+    "user_id": null,
+    "key": "31c53ca59896488297b0fc269a42c79a",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:03:56.788187"
+  },
+  "12": {
+    "id": "12",
+    "is_used": true,
+    "user_id": "1",
+    "key": "e0aebe76c15d4557a8dd10277056c2ba",
+    "email": "komin.04@mail.ru",
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:22:34.335279"
+  },
+  "13": {
+    "id": "13",
+    "is_used": false,
+    "user_id": null,
+    "key": "dbb5ce73c1a846fe8a8efda5902650d3",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:03:56.789102"
+  },
+  "14": {
+    "id": "14",
+    "is_used": false,
+    "user_id": null,
+    "key": "a4cca69b08124a4fa45f94b9d22980e5",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:03:56.789102"
+  },
+  "15": {
+    "id": "15",
+    "is_used": false,
+    "user_id": null,
+    "key": "284f248b8b7f4852b70a951d94fab46d",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:03:56.790169"
+  },
+  "16": {
+    "id": "16",
+    "is_used": false,
+    "user_id": null,
+    "key": "a4ae8801fb214a779207a600211137e3",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:03:56.790169"
+  },
+  "17": {
+    "id": "17",
+    "is_used": false,
+    "user_id": null,
+    "key": "3dc9819b3cd64e7bb1d4f1fafbd12e17",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:03:56.790169"
+  },
+  "18": {
+    "id": "18",
+    "is_used": true,
+    "user_id": "4",
+    "key": "acbae3174fb74fbfa985897bd81891da",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:09:22.532425"
+  },
+  "19": {
+    "id": "19",
+    "is_used": true,
+    "user_id": "1",
+    "key": "f5cc8beedec444c6b0ea815877dc35a3",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:12:13.674694"
+  },
+  "20": {
+    "id": "20",
+    "is_used": true,
+    "user_id": "1",
+    "key": "ab3f9bb184694f6fad5aea1ca7527d4c",
+    "email": null,
+    "created_at": "2024-01-05T14:55:30.214833",
+    "updated_at": "2024-01-05T15:16:09.864626"
+  },
+  "21": {
+    "id": "21",
+    "is_used": false,
+    "user_id": null,
+    "key": "8cca27bfb4194982a546e275657b8e9e",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.045792"
+  },
+  "22": {
+    "id": "22",
+    "is_used": false,
+    "user_id": null,
+    "key": "377e8e4967734808a34daef0dc1de96c",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.046791"
+  },
+  "23": {
+    "id": "23",
+    "is_used": false,
+    "user_id": null,
+    "key": "c2e8b099d4804a6488ca5370fd88c810",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.047812"
+  },
+  "24": {
+    "id": "24",
+    "is_used": false,
+    "user_id": null,
+    "key": "38a74f7e41b34595b6dc91b660fde79b",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.047812"
+  },
+  "25": {
+    "id": "25",
+    "is_used": false,
+    "user_id": null,
+    "key": "dc7733e47c714f10b3eca6d177c616c9",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.048792"
+  },
+  "26": {
+    "id": "26",
+    "is_used": false,
+    "user_id": null,
+    "key": "5e5b497c44394445806ca75470de5a6d",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.048792"
+  },
+  "27": {
+    "id": "27",
+    "is_used": false,
+    "user_id": null,
+    "key": "3e4a461682bf4f50b7a6376a7f2fd940",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.049791"
+  },
+  "28": {
+    "id": "28",
+    "is_used": true,
+    "user_id": "1",
+    "key": "90cf1577e0144642a49691be0b1c1e6b",
+    "email": "tesrtyddu@mail.ru",
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:58:45.853826"
+  },
+  "29": {
+    "id": "29",
+    "is_used": false,
+    "user_id": null,
+    "key": "ddcb8762ec7f4c38b9bb2bfcc2e5c553",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.050791"
+  },
+  "30": {
+    "id": "30",
+    "is_used": false,
+    "user_id": null,
+    "key": "722bc85c519a4ab2b0524491c995e6b1",
+    "email": null,
+    "created_at": "2024-01-05T16:55:13.141065",
+    "updated_at": "2024-01-05T16:57:24.051804"
+  }
+}
