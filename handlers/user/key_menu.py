@@ -5,7 +5,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 from aiohttp import ClientResponseError
 
-from api.mts.requests import TvoeAPI
+from api.tvoe.requests import TvoeAPI
 from data.keyboard import key_input_kb_text, generate_cancel_input_kb
 from domain.repository.key import KeysRepository
 from domain.repository.user import UsersRepository
@@ -28,7 +28,7 @@ async def key_press(message: Message, state: FSMContext):
 async def key_input(message: Message, state: FSMContext):
     key = re.search(r'[a-z0-9]{32}', message.text)
     if not key:
-        await message.reply(text='<b>🔴 Ключ неверного формата ❌</b>')
+        return await message.reply(text='<b>🔴 Ключ неверного формата ❌</b>')
     key = key.group(0)
     state_data = await state.get_data()
     await state.clear()

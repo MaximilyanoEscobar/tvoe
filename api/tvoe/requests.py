@@ -1,13 +1,9 @@
-import json
 import logging
-import random
-import string
-from urllib import parse
 
 import aiohttp
 from aiohttp import ClientError
 
-from api.mts.models import BaseRequestModel
+from api.tvoe.models import BaseRequestModel
 
 
 class BaseRequest(object):
@@ -42,8 +38,8 @@ class BaseRequest(object):
 
 
 class TvoeAPI(BaseRequest):
-    def __init__(self, base_url='https://api.mindbox.ru'):
-        super().__init__(base_url=base_url)
+    def __init__(self, proxy=None, base_url='https://api.mindbox.ru'):
+        super().__init__(base_url=base_url, proxy=proxy)
 
     async def create_integration(self,
                                  email: str,
@@ -57,33 +53,7 @@ class TvoeAPI(BaseRequest):
             'operation': 'popmechanic-integration-create-76921',
             'originDomain': 'tvoe.ru',
         }
-        second_data = {
-                "customer": {
-                    "email": email,
-                    "firstName": "Евгений",
-                    "subscriptions": [
-                        {
-                            "pointOfContact": "Email"
-                        }
-                    ]
-                },
-                "customerAction": {
-                    "customFields": {
-                        "EmailInWheel": email,
-                        "WinResultlInWheel": result_in_wheel
-                    }
-                }
-            }
-        data = {
-            "version": "1.0.524",
-            "transactionId": "d607d215-beaf-4a53-b125-04d4452cbd2e",
-            "transport": "beacon",
-            "operation": "popmechanic-integration-create-76921",
-            "originDomain": "tvoe.ru",
-            "deviceUUID": "78c87e96-c1e6-42ca-a739-db3491168b5e",
-            "ianaTimeZone": "Europe/Moscow",
-            "data": str(second_data)
-        }
 
+        data = 'originDomain=tvoe.ru&deviceUUID=78c87e96-c1e6-42ca-a739-db3491168b5e&operation=popmechanic-integration-create-76921&ianaTimeZone=Europe/Moscow&data={"customer":{"email":"'f"{email}"'","firstName":"Евгений","subscriptions":[{"pointOfContact":"Email"}]},"customerAction":{"customFields":{"EmailInWheel":"'f"{email}"'","WinResultlInWheel":"'f"{result_in_wheel}"'"}}}'
 
         return await self._request('POST', endpoint, params=params, data=data)

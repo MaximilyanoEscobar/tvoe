@@ -6,7 +6,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 from aiohttp import ClientResponseError
 
-from api.mts.requests import TvoeAPI
+from api.tvoe.requests import TvoeAPI
 from domain.repository.key import KeysRepository
 from loader import InputUser
 
@@ -43,15 +43,18 @@ async def input_email(message: Message, state: FSMContext):
         if key_data.is_used:
             return await message.reply('<b>🔴 Ключ уже был использован ❌</b>')
         try:
-            for result_in_wheel in range(1, 11):
-                await tvoe_api.create_integration(email=email,
-                                                  result_in_wheel=result_in_wheel)
-                await asyncio.sleep(5)
+            for _ in range(3):
+                for result_in_wheel in range(1, 11):
+                    await tvoe_api.create_integration(email=email,
+                                                      result_in_wheel=result_in_wheel)
+                    await asyncio.sleep(0.5)
 
             key_data.is_used = True
             key_data.email = email
             await keys_repo.update_key_data_by_id(id=key_data.id, key_data=key_data)
-            return await message.reply(text='<b>🔴 Баллы успешно накручены! ✅</b>')
+            return await message.reply(text='<b>🔴 Баллы успешно накручены! ✅\n'
+                                            'Ожидайте около 5 минут до полного зачисления их на аккаунт\n'
+                                            'Также на вашу почту были высланы личные промокоды на скидку до 25%, которые суммируются с баллами</b>')
 
         except ClientResponseError as e:
             await message.reply(
